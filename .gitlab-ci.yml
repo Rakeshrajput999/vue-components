@@ -10,13 +10,13 @@ build website:
         - npm run build
     artifacts:
         paths:
-            - build
+            - dist
 
 test website:
     image: alpine
     stage: test
     script:
-        - test -f build/index.html
+        - test -f dist/index.html
 
 unit tests:
     image: node:16-alpine
