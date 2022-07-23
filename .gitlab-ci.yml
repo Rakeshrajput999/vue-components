@@ -1,6 +1,26 @@
+stages:
+    - build
+    - test 
+
 build website:
     image: node:16-alpine
     script:
         - npm install
         - npm run build
+    artifacts:
+        paths:
+            - build
+
+test website:
+    image: alpine
+    stage: test
+    script:
+        - test -f build/index.html
+
+unit tests:
+    image: node:16-alpine
+    stage: test
+    script:
+        - npm install
+        - npm test
 
