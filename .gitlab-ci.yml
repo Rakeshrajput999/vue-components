@@ -4,7 +4,7 @@ stages:
     - test 
     - deploy
 
-.build website:
+build website:
     image: node:16-alpine
     stage: build
     script:
@@ -15,7 +15,7 @@ stages:
         paths:
             - dist
 
-.test website:
+test website:
     image: alpine
     stage: test
     script:
@@ -42,7 +42,9 @@ deploy to s3:
         entrypoint: [""]
     script:
         - aws --version
-        - echo "hello s3" > test.txt
-        - aws s3 cp test.txt s3://$AWS_S3_BUCKET/test.txt
+        # - echo "hello s3" > test.txt
+        # this line of script add folder to s3 bucket and delete all previus added files and folder
+        - aws s3 sync dist s3://$AWS_S3_BUCKET --delete 
+        # - aws s3 cp test.txt s3://$AWS_S3_BUCKET/test.txt
 
 
