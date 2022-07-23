@@ -1,5 +1,5 @@
 stages:
-    - .pre
+    # - .pre
     - build
     - test 
 
@@ -8,6 +8,7 @@ build website:
     stage: build
     script:
         - npm install
+        - npm run lint
         - npm run build
     artifacts:
         paths:
@@ -19,12 +20,12 @@ test website:
     script:
         - test -f dist/index.html
 
-linter website:
-    image: node:16-alpine
-    stage: .pre
-    script:
-        - npm install
-        - npm run lint
+# linter website:
+#     image: node:16-alpine
+#     stage: .pre
+#     script:
+#         - npm install
+#         - npm run lint
 
 # unit tests:
 #     image: node:16-alpine
