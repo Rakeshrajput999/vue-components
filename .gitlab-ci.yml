@@ -40,8 +40,11 @@ deploy to s3:
     image:
         name: amazon/aws-cli:2.7.18
         entrypoint: [""]
+    rules:
+        - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
     script:
         - aws --version
+        - echo CI_COMMIT_REF_NAME
         # - echo "hello s3" > test.txt
         # this line of script add folder to s3 bucket and delete all previus added files and folder
         - aws s3 sync dist s3://$AWS_S3_BUCKET --delete 
