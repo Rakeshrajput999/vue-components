@@ -18,10 +18,10 @@ test website:
     script:
         - test -f dist/index.html
 
-unit tests:
-    image: node:16-alpine
-    stage: test
-    script:
-        - npm install
-        - npm test
+# unit tests:
+#     image: node:16-alpine
+#     stage: test
+#     script:
+#         - npm install
+#         - npm r
 
