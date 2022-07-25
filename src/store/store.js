@@ -19,7 +19,7 @@ const store = createStore({
   actions: {
     async register ({ commit ,state}, credentials) {
       return axios
-        .post('//localhost:3000/register', credentials)
+        .post('//localhost:3001/register', credentials)
         .then(({ data }) => {
           console.log('user data is',data)
           commit('SET_USER_DATA', data)
@@ -28,7 +28,7 @@ const store = createStore({
     },
      login ({ commit }, credentials) {
       return axios
-        .post('//localhost:3000/login', credentials)
+        .post('//localhost:3001/login', credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data)
         })
